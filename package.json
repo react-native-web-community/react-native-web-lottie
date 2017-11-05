@@ -1,6 +1,6 @@
 {
   "name": "react-native-web-lottie",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "React Native for Web implementation of Lottie",
   "main": "src/index.js",
   "repository": {
