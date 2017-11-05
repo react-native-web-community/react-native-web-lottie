@@ -5,8 +5,8 @@ import centered from './decorator-centered';
 addDecorator(centered);
 
 setOptions({
-  name: 'Name',
-  url: 'https://react-native-web-community.github.io/react-native-web-name',
+  name: 'Lottie',
+  url: 'https://react-native-web-community.github.io/react-native-web-lottie',
   goFullScreen: false,
   showLeftPanel: true,
   showDownPanel: false,
