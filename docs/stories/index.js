@@ -1,6 +1,9 @@
 import React from 'react';
-import Lottie from 'lottie-react-native';
+import Animation from 'lottie-react-native';
 
 import { storiesOf } from '@storybook/react';
 
-storiesOf('Lottie', module).add('basic', () => <Lottie />);
+// Gift animation by Jan Semler https://www.lottiefiles.com/u/141
+storiesOf('Lottie', module)
+  .add('basic', () => <Animation source={require('./assets/gift.json')} />)
+  .add('loop', () => <Animation source={require('./assets/gift.json')} loop />);
