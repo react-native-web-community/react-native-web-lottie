@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { View } from 'react-native';
 import bodymovin from 'bodymovin';
 
-export default class Animation extends PureComponent {
+class Animation extends PureComponent {
   animationDOMNode = null;
 
   componentDidMount() {
@@ -26,7 +26,7 @@ export default class Animation extends PureComponent {
       animationData: props.source,
       renderer: 'svg',
       loop: props.loop || false,
-      autoplay: true,
+      autoplay: props.autoplay,
     });
   };
 
@@ -36,3 +36,7 @@ export default class Animation extends PureComponent {
     return <View style={this.props.style} ref={this.setAnimationDOMNode} />;
   }
 }
+
+export default React.forwardRef((props, ref) => (
+  <Animation {...props} ref={c=>ref(c.anim)} />
+))
