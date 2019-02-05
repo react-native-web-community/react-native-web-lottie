@@ -37,6 +37,4 @@ class Animation extends PureComponent {
   }
 }
 
-export default React.forwardRef((props, ref) => (
-  <Animation {...props} ref={c=>ref(c.anim)} />
-))
+export default React.forwardRef((props, ref) => <Animation {...props} ref={c => ref(c.anim)} />);
