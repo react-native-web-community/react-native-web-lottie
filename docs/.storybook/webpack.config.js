@@ -4,12 +4,20 @@ const webpack = require('webpack');
 module.exports = (storybookBaseConfig, configType) => {
   const DEV = configType === 'DEVELOPMENT';
 
+  const libDirectory = path.resolve(__dirname, '../../');
+
   storybookBaseConfig.module.rules.push({
     test: /\.js$/,
-    exclude: /node_modules/,
+    include: [
+      path.resolve(libDirectory, 'src'),
+    ],
     use: {
       loader: 'babel-loader',
-      options: { cacheDirectory: true }
+      options: {
+        cacheDirectory: true,
+        presets: ['module:metro-react-native-babel-preset'],
+        plugins: ['react-native-web'],
+      }
     }
   });
 
@@ -20,8 +28,10 @@ module.exports = (storybookBaseConfig, configType) => {
     })
   );
 
+  storybookBaseConfig.resolve.extensions = ['.web.js', '.js', '.json', '.web.jsx', '.jsx'];
+
   storybookBaseConfig.resolve.alias = {
-    'react-native': 'react-native-web',
+    'react-native$': 'react-native-web',
     'lottie-react-native': path.join(__dirname, '../../src/')
   };
 

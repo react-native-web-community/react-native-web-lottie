@@ -26,7 +26,10 @@
   },
   "babel": {
     "presets": [
-      "react-native"
+      "module:metro-react-native-babel-preset"
+    ],
+    "plugins": [
+      "react-native-web"
     ]
   },
   "files": [
@@ -35,14 +38,17 @@
     "yarn.lock"
   ],
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-react-native": "^4.0.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/runtime": "^7.3.1",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-react-native-web": "^0.10.0",
+    "metro-react-native-babel-preset": "^0.51.1",
     "prettier": "^1.7.3",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-native-web": "^0.1.1",
+    "react": "^16.7.0",
+    "react-art": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-native-web": "^0.10.0",
     "webpack": "^3.6.0"
   },
   "peerDependencies": {
