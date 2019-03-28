@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import { View } from 'react-native';
-import bodymovin from 'bodymovin';
+import lottie from 'lottie-web';
 
 class Animation extends PureComponent {
   animationDOMNode = null;
@@ -21,7 +21,7 @@ class Animation extends PureComponent {
       this.anim.destroy();
     }
 
-    this.anim = bodymovin.loadAnimation({
+    this.anim = lottie.loadAnimation({
       container: this.animationDOMNode,
       animationData: props.source,
       renderer: 'svg',
