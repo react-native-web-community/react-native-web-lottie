@@ -17,7 +17,7 @@ resolve: {
 ```
 
 ## Usage
-See [Lottie's docs](http://airbnb.io/lottie/react-native/react-native.html/).
+See [Lottie's docs](https://airbnb.io/lottie/#/react-native).
 
 ## Examples
 See the [storybook](https://react-native-web-community.github.io/react-native-web-lottie/storybook).
