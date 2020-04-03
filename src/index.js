@@ -32,6 +32,23 @@ class Animation extends PureComponent {
 
   setAnimationDOMNode = ref => (this.animationDOMNode = ReactDOM.findDOMNode(ref));
 
+  play = (...frames) => {
+    if (!this.anim) {
+      return
+    }
+
+    this.anim.playSegments(frames, true)
+    this.anim.play()
+  }
+
+  reset = () => {
+    if (!this.anim) {
+      return
+    }
+
+    this.anim.stop()
+  }
+  
   render() {
     return <View style={this.props.style} ref={this.setAnimationDOMNode} />;
   }
