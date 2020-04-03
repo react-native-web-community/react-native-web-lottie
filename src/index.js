@@ -38,7 +38,6 @@ class Animation extends PureComponent {
     }
 
     this.anim.playSegments(frames, true)
-    this.anim.play()
   }
 
   reset = () => {
