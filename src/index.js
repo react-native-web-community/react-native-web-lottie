@@ -27,6 +27,7 @@ class Animation extends PureComponent {
       renderer: 'svg',
       loop: props.loop || false,
       autoplay: props.autoPlay,
+      rendererSettings: props.rendererSettings || {},
     });
   };
 
