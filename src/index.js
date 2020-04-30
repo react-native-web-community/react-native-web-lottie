@@ -8,6 +8,19 @@ class Animation extends PureComponent {
 
   componentDidMount() {
     this.loadAnimation(this.props);
+
+    if (this.props.progress) {
+      this.props.progress.addListener((progress) => {
+        const { value } = progress;
+        let frame = value / (1 / this.anim.getDuration(true));
+        this.anim.goToAndStop(frame, true);
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.progress)
+	    this.props.progress.removeAllListeners();
   }
 
   componentWillReceiveProps(nextProps) {

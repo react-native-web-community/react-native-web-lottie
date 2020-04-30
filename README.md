@@ -26,5 +26,4 @@ See the [storybook](https://react-native-web-community.github.io/react-native-we
 PRs are welcome!
 
 The following important features are not implemented:
-- `progress` prop
 - imperative API
