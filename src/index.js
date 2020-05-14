@@ -10,7 +10,7 @@ class Animation extends PureComponent {
     this.loadAnimation(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.source && nextProps.source && this.props.source.nm !== nextProps.source.nm) {
       this.loadAnimation(nextProps);
     }
