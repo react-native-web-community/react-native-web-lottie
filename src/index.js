@@ -29,6 +29,10 @@ class Animation extends PureComponent {
       autoplay: props.autoPlay,
       rendererSettings: props.rendererSettings || {},
     });
+
+    if (props.onAnimationFinish) {
+      this.anim.addEventListener("complete", props.onAnimationFinish);
+    }
   };
 
   setAnimationDOMNode = ref => (this.animationDOMNode = ReactDOM.findDOMNode(ref));
