@@ -9,7 +9,9 @@ class Animation extends PureComponent {
   componentDidMount() {
     this.loadAnimation(this.props);
 
-    if (this.props.progress) {
+    if (typeof this.props.progress === 'object' &&
+        this.props.progress._listeners) {
+
       this.props.progress.addListener((progress) => {
         const { value } = progress;
         let frame = value / (1 / this.anim.getDuration(true));
@@ -19,8 +21,10 @@ class Animation extends PureComponent {
   }
 
   componentWillUnmount() {
-    if (this.props.progress)
+    if (typeof this.props.progress === 'object' &&
+        this.props.progress._listeners) {
 	    this.props.progress.removeAllListeners();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
