@@ -27,13 +27,13 @@ class Animation extends PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.source && nextProps.source && this.props.source.nm !== nextProps.source.nm) {
       this.loadAnimation(nextProps);
     }
   }
 
-  loadAnimation = props => {
+  loadAnimation = (props) => {
     if (this.anim) {
       this.anim.destroy();
     }
@@ -44,33 +44,37 @@ class Animation extends PureComponent {
       renderer: 'svg',
       loop: props.loop || false,
       autoplay: props.autoPlay,
-      rendererSettings: props.rendererSettings || {},
+      rendererSettings: props.rendererSettings || {},
     });
+
+    if (props.onAnimationFinish) {
+      this.anim.addEventListener('complete', props.onAnimationFinish);
+    }
   };
 
-  setAnimationDOMNode = ref => (this.animationDOMNode = ReactDOM.findDOMNode(ref));
+  setAnimationDOMNode = (ref) => (this.animationDOMNode = ReactDOM.findDOMNode(ref));
 
   play = (...frames) => {
     if (!this.anim) {
-      return
+      return;
     }
 
-    this.anim.playSegments(frames, true)
-  }
+    this.anim.playSegments(frames, true);
+  };
 
   reset = () => {
     if (!this.anim) {
-      return
+      return;
     }
 
-    this.anim.stop()
-  }
-  
+    this.anim.stop();
+  };
+
   render() {
     return <View style={this.props.style} ref={this.setAnimationDOMNode} />;
   }
 }
 
 export default React.forwardRef((props, ref) => (
-  <Animation {...props} ref={typeof ref == 'function' ? c => ref(c && c.anim) : ref} />
+  <Animation {...props} ref={typeof ref == 'function' ? (c) => ref(c && c.anim) : ref} />
 ));
