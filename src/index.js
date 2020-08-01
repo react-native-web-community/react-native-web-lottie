@@ -10,7 +10,7 @@ class Animation extends PureComponent {
     this.loadAnimation(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.source && nextProps.source && this.props.source.nm !== nextProps.source.nm) {
       this.loadAnimation(nextProps);
     }
@@ -27,11 +27,32 @@ class Animation extends PureComponent {
       renderer: 'svg',
       loop: props.loop || false,
       autoplay: props.autoPlay,
+      rendererSettings: props.rendererSettings || {},
     });
+
+    if (props.onAnimationFinish) {
+      this.anim.addEventListener("complete", props.onAnimationFinish);
+    }
   };
 
   setAnimationDOMNode = ref => (this.animationDOMNode = ReactDOM.findDOMNode(ref));
 
+  play = (...frames) => {
+    if (!this.anim) {
+      return
+    }
+
+    this.anim.playSegments(frames, true)
+  }
+
+  reset = () => {
+    if (!this.anim) {
+      return
+    }
+
+    this.anim.stop()
+  }
+  
   render() {
     return <View style={this.props.style} ref={this.setAnimationDOMNode} />;
   }
