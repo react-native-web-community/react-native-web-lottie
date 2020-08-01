@@ -10,7 +10,7 @@ setOptions({
   goFullScreen: false,
   showLeftPanel: true,
   showDownPanel: false,
-  downPanelInRight: false
+  downPanelInRight: false,
 });
 
 function loadStories() {

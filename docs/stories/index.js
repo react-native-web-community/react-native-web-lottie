@@ -7,4 +7,6 @@ import { storiesOf } from '@storybook/react';
 storiesOf('Lottie', module)
   .add('basic', () => <Animation source={require('./assets/gift.json')} autoPlay />)
   .add('loop', () => <Animation source={require('./assets/gift.json')} loop autoPlay />)
-  .add('onAnimationFinish', () => <Animation source={require('./assets/gift.json')} autoPlay onAnimationFinish={() => alert('Finished!')}/>);
+  .add('onAnimationFinish', () => (
+    <Animation source={require('./assets/gift.json')} autoPlay onAnimationFinish={() => alert('Finished!')} />
+  ));
