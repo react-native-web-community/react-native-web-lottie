@@ -32,5 +32,5 @@ PRs are welcome!
 
 The following important features are not implemented:
 
-- `progress` prop
+- `progress` prop (partially implemented using Animated.Value)
 - imperative API
