@@ -8,7 +8,7 @@
 
 Alias the package in your webpack config:
 
-```
+```js
 resolve: {
     alias: {
         'react-native': 'react-native-web',
@@ -16,6 +16,19 @@ resolve: {
         'lottie-react-native': 'react-native-web-lottie',
     }
 }
+```
+
+If you are using [Expo](https://docs.expo.dev/guides/customizing-webpack/), you can simply do
+```js
+const createExpoWebpackConfigAsync = require('@expo/webpack-config');
+
+module.exports = async function(env, argv) {
+  const config = await createExpoWebpackConfigAsync(env, argv);
+
+  config.resolve.alias['lottie-react-native'] = 'react-native-web-lottie';
+
+  return config;
+};
 ```
 
 ## Usage
