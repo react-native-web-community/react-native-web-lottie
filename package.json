@@ -3,6 +3,7 @@
   "version": "1.4.4",
   "description": "React Native for Web implementation of Lottie",
   "main": "dist/index.js",
+  "types": "src/index.d.ts",
   "main-es": "src/index.js",
   "repository": {
     "type": "git",
@@ -14,29 +15,17 @@
     "url": "https://github.com/Minishlink"
   },
   "license": "MIT",
-  "keywords": [
-    "react-native",
-    "react-native-web",
-    "lottie-react-native"
-  ],
+  "keywords": ["react-native", "react-native-web", "lottie-react-native"],
   "scripts": {
     "prepublish": "yarn build",
     "build": "mkdir -p dist && babel src --out-dir dist --copy-files",
     "test": "prettier --check ."
   },
   "babel": {
-    "presets": [
-      "module:metro-react-native-babel-preset"
-    ],
-    "plugins": [
-      "react-native-web"
-    ]
+    "presets": ["module:metro-react-native-babel-preset"],
+    "plugins": ["react-native-web"]
   },
-  "files": [
-    "src",
-    "dist",
-    "yarn.lock"
-  ],
+  "files": ["src", "dist", "yarn.lock"],
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
