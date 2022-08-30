@@ -37,11 +37,11 @@ class Animation extends PureComponent {
 
     this.anim = lottie.loadAnimation({
       container: this.animationDOMNode,
-      animationData: props.source,
       renderer: 'svg',
       loop: props.loop || false,
       autoplay: props.autoPlay,
       rendererSettings: props.rendererSettings || {},
+      ...(props.source.uri && typeof props.source.uri === "string" ? {path:props.source.uri} : {animationData: props.source})
     });
 
     if (props.onAnimationFinish) {
