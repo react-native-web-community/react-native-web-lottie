@@ -25,8 +25,15 @@ class Animation extends PureComponent {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.source && nextProps.source && this.props.source.nm !== nextProps.source.nm) {
+    if (
+      this.props.source &&
+      nextProps.source &&
+      (this.props.source.nm !== nextProps.source.nm || this.props.source.uri !== nextProps.source.uri)
+    ) {
       this.loadAnimation(nextProps);
+    }
+    if (this.props.speed !== nextProps.speed) {
+      this.anim.setSpeed(nextProps.speed);
     }
   }
 
@@ -37,12 +44,18 @@ class Animation extends PureComponent {
 
     this.anim = lottie.loadAnimation({
       container: this.animationDOMNode,
-      animationData: props.source,
       renderer: 'svg',
       loop: props.loop || false,
       autoplay: props.autoPlay,
       rendererSettings: props.rendererSettings || {},
+      ...(props.source.uri && typeof props.source.uri === 'string'
+        ? { path: props.source.uri }
+        : { animationData: props.source }),
     });
+
+    if (props.speed !== undefined) {
+      this.anim.setSpeed(props.speed);
+    }
 
     if (props.onAnimationFinish) {
       this.anim.addEventListener('complete', props.onAnimationFinish);
