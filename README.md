@@ -19,10 +19,11 @@ resolve: {
 ```
 
 If you are using [Expo](https://docs.expo.dev/guides/customizing-webpack/), you can simply do
+
 ```js
 const createExpoWebpackConfigAsync = require('@expo/webpack-config');
 
-module.exports = async function(env, argv) {
+module.exports = async function (env, argv) {
   const config = await createExpoWebpackConfigAsync(env, argv);
 
   config.resolve.alias['lottie-react-native'] = 'react-native-web-lottie';

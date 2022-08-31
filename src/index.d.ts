@@ -1,5 +1,5 @@
-declare module "react-native-web-lottie" {
-  import { Animated, StyleProp, ViewStyle } from "react-native";
+declare module 'react-native-web-lottie' {
+  import { Animated, StyleProp, ViewStyle } from 'react-native';
   /**
    * Serialized animation as generated from After Effects
    */
@@ -93,10 +93,7 @@ declare module "react-native-web-lottie" {
     testID?: string;
   }
 
-  class AnimatedLottieView extends React.Component<
-    AnimatedLottieViewProps,
-    {}
-  > {
+  class AnimatedLottieView extends React.Component<AnimatedLottieViewProps, {}> {
     play(startFrame?: number, endFrame?: number): void;
     reset(): void;
   }
