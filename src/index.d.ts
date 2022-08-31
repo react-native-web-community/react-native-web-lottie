@@ -22,12 +22,12 @@ declare module "react-native-web-lottie" {
     className?: string;
   }
 
-  export interface FilterSizeConfig  {
+  export interface FilterSizeConfig {
     width: string;
     height: string;
     x: string;
     y: string;
-};
+  }
 
   export interface SVGRendererConfig extends BaseRendererConfig {
     title?: string;
@@ -50,7 +50,7 @@ declare module "react-native-web-lottie" {
      */
     source: string | AnimationObject | { uri: string };
 
-    progress: Animated.Value;
+    progress?: Animated.Value;
 
     /**
      * A boolean flag indicating whether or not the animation should loop.
@@ -70,11 +70,16 @@ declare module "react-native-web-lottie" {
      */
     autoPlay?: boolean;
 
+    /**
+     * The speed the animation will progress. This only affects the imperative API. The
+     * default value is 1.
+     */
+    speed?: number;
 
     /**
      * Check out lottie docs : https://airbnb.io/lottie/#/web?id=other-loading-options
      */
-    rendererSettings ?: SVGRendererConfig;
+    rendererSettings?: SVGRendererConfig;
 
     /**
      * A callback function which will be called when animation is finished. Note that this
